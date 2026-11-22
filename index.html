@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MediCare - Medical Education</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f8fc;
+    color: #17324d;
+}
+
+header {
+    background: #087eaa;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+nav {
+    background: #075b80;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    display: inline-block;
+}
+
+.hero {
+    padding: 65px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #dff6ff, #ffffff);
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #087eaa;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.container {
+    padding: 35px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+    text-align: center;
+}
+
+.card h3 {
+    color: #087eaa;
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #087eaa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    background: #075b80;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #075b80;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1> MediCare </h1>
+    <p>International Medical Education Platform</p>
+</header>
+
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#anatomie">Anatomie</a>
+    <a href="#maladies">Maladies</a>
+    <a href="#prevention">Prévention</a>
+    <a href="#medicaments">Médicaments</a>
+    <button onclick="changeLanguage()">EN / FR</button>
+</nav>
+
+<section class="hero" id="accueil">
+    <h2>Bienvenue sur MediCare</h2>
+
+    <p>
+    Découvrez le corps humain, comprenez les maladies
+    et apprenez les bases de la santé grâce à une
+    plateforme éducative accessible à tous.
+    </p>
+</section>
+
+<section class="container">
+    <h2>Explorer MediCare</h2>
+
+    <div class="cards">
+
+        <div class="card" id="anatomie">
+            <h3>Anatomie humaine</h3>
+            <p>Explorez les organes, les tissus et les systèmes du corps humain.</p>
+            <a href="#">Explorer →</a>
+        </div>
+
+        <div class="card" id="maladies">
+            <h3>Maladies</h3>
+            <p>Découvrez les différentes maladies, leurs causes et leurs symptômes.</p>
+            <a href="#">Découvrir →</a>
+        </div>
+
+        <div class="card" id="prevention">
+            <h3>Prévention et conseils</h3>
+            <p>Apprenez les principes de prévention et les habitudes favorables à la santé.</p>
+            <a href="#">Découvrir →</a>
+        </div>
+
+        <div class="card" id="medicaments">
+            <h3>Médicaments</h3>
+            <p>Découvrez les familles de médicaments et leurs utilisations générales.</p>
+            <a href="#">Explorer →</a>
+        </div>
+
+        <div class="card">
+            <h3>Établissements de santé</h3>
+            <p>Découvrez les différents établissements et services de santé.</p>
+            <a href="#">Explorer →</a>
+        </div>
+
+        <div class="card">
+            <h3>MediBot</h3>
+            <p>Un espace d'assistance éducative consacré aux connaissances médicales.</p>
+            <a href="#">Découvrir →</a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <h3>MediCare</h3>
+    <p>Apprendre la médecine, comprendre la santé.</p>
+    <p>© 2026 MediCare - Tous droits réservés.</p>
+    <p>Plateforme éducative. Ne remplace pas une consultation médicale.</p>
+</footer>
+
+<script>
+let english = false;
+
+function changeLanguage() {
+    english = !english;
+
+    document.querySelector(".hero h2").textContent =
+        english ? "Welcome to MediCare" : "Bienvenue sur MediCare";
+
+    document.querySelector(".hero p").textContent =
+        english
+        ? "Discover the human body, understand diseases and learn about health through an educational platform accessible to everyone."
+        : "Découvrez le corps humain, comprenez les maladies et apprenez les bases de la santé grâce à une plateforme éducative accessible à tous.";
+}
+</script>
+
+</body>
+  </html>
