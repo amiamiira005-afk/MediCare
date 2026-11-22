@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Anatomie humaine | MediCare</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f9fc;
+    color: #18364b;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(135deg, #052f4a, #087eaa);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+nav a {
+    color: #075b80;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.intro {
+    text-align: center;
+    padding: 65px 20px;
+    background: linear-gradient(135deg, #e1f5fc, white);
+}
+
+.intro h2 {
+    color: #064b70;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.intro p {
+    max-width: 750px;
+    margin: auto;
+    color: #587080;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.container h2 {
+    text-align: center;
+    color: #064b70;
+    margin-bottom: 35px;
+}
+
+.systems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.system-card {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #075b8010;
+    border-bottom: 4px solid #08a6a6;
+    transition: 0.3s;
+}
+
+.system-card:hover {
+    transform: translateY(-5px);
+}
+
+.system-card h3 {
+    color: #087eaa;
+    margin-bottom: 12px;
+}
+
+.system-card p {
+    color: #587080;
+    font-size: 14px;
+}
+
+.system-card a {
+    display: inline-block;
+    margin-top: 18px;
+    color: #078c9b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer {
+    background: #052f4a;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+@media(max-width: 600px) {
+    .intro h2 {
+        font-size: 26px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MediCare</h1>
+    <p>Bibliothèque d'anatomie humaine</p>
+</header>
+
+<nav>
+    <a href="index.html">← Retour à l'accueil</a>
+</nav>
+
+<section class="intro">
+    <h2>Explorez le corps humain</h2>
+
+    <p>
+        Découvrez les différents systèmes du corps humain,
+        leurs organes, leurs structures et leurs fonctions
+        grâce à notre bibliothèque éducative.
+    </p>
+</section>
+
+<section class="container">
+
+    <h2>Les systèmes du corps humain</h2>
+
+    <div class="systems">
+
+        <div class="system-card">
+            <h3>1. Système nerveux</h3>
+            <p>Cerveau, moelle épinière et nerfs. Il coordonne les activités du corps.</p>
+            <a href="nerveux.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>2. Système cardiovasculaire</h3>
+            <p>Cœur et vaisseaux sanguins. Il assure la circulation du sang.</p>
+            <a href="cardiovasculaire.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>3. Système respiratoire</h3>
+            <p>Poumons et voies respiratoires. Il permet les échanges gazeux.</p>
+            <a href="respiratoire.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>4. Système squelettique</h3>
+            <p>Os et articulations. Il soutient et protège le corps.</p>
+            <a href="squelettique.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>5. Système digestif</h3>
+            <p>Estomac, intestins et organes associés. Il transforme les aliments.</p>
+            <a href="digestif.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>6. Système endocrinien</h3>
+            <p>Glandes hormonales. Il régule plusieurs fonctions de l'organisme.</p>
+            <a href="endocrinien.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>7. Système reproducteur</h3>
+            <p>Organes reproducteurs masculins et féminins.</p>
+            <a href="reproducteur.html">Explorer →</a>
+        </div>
+
+        <div class="system-card">
+            <h3>8. Système urinaire</h3>
+            <p>Reins, uretères, vessie et urètre. Il participe à l'élimination des déchets.</p>
+            <a href="urinaire.html">Explorer →</a>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <h3>MediCare</h3>
+    <p>Apprendre la médecine, comprendre la santé.</p>
+    <p>© 2026 MediCare - Tous droits réservés.</p>
+    <p>Contenu éducatif ne remplaçant pas une consultation médicale.</p>
+</footer>
+
+</body>
+</html>
