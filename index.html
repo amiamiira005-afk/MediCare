@@ -18,8 +18,8 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f8fb;
+    font-family: 'Arial', sans-serif;
+    background: #f5f9fc;
     color: #18364b;
     line-height: 1.7;
 }
@@ -27,29 +27,30 @@ body {
 /* HEADER */
 
 header {
-    background: linear-gradient(120deg, #063b5c, #087eaa);
+    background: linear-gradient(135deg, #052f4a, #087eaa);
     color: white;
-    padding: 25px 15px;
+    padding: 35px 20px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 36px;
-    letter-spacing: 1px;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 header p {
-    font-size: 14px;
+    font-size: 15px;
     opacity: 0.9;
 }
 
 /* NAVIGATION */
 
 nav {
-    background: #ffffff;
-    padding: 15px 10px;
+    background: white;
+    padding: 18px 10px;
     text-align: center;
-    box-shadow: 0 3px 12px #00000012;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -58,9 +59,10 @@ nav {
 nav a {
     color: #075b80;
     text-decoration: none;
-    margin: 8px;
+    margin: 10px 14px;
     font-weight: bold;
     font-size: 14px;
+    transition: 0.3s;
 }
 
 nav a:hover {
@@ -68,75 +70,78 @@ nav a:hover {
 }
 
 nav button {
-    background: #087eaa;
+    background: linear-gradient(135deg, #087eaa, #00a6a6);
     color: white;
     border: none;
-    padding: 10px 16px;
-    border-radius: 20px;
+    padding: 11px 20px;
+    border-radius: 25px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 /* ACCUEIL */
 
 .hero {
-    padding: 85px 20px;
+    padding: 100px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #dff6ff, #ffffff);
+    background: linear-gradient(135deg, #e1f5fc, #ffffff);
 }
 
 .hero h2 {
-    color: #075b80;
-    font-size: 36px;
+    color: #064b70;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
-    font-size: 17px;
-    color: #456477;
+    font-size: 18px;
+    color: #526e80;
 }
 
-/* RUBRIQUES */
+/* CONTENU */
 
 .container {
-    padding: 60px 20px;
-    max-width: 1150px;
+    padding: 75px 20px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .container > h2 {
     text-align: center;
-    color: #075b80;
-    font-size: 28px;
-    margin-bottom: 35px;
+    color: #064b70;
+    font-size: 32px;
+    margin-bottom: 45px;
 }
+
+/* CARTES */
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
 .card {
     background: white;
-    padding: 30px 22px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px #075b8010;
+    padding: 35px 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 65, 100, 0.07);
     text-align: center;
     border-bottom: 4px solid #08a6a6;
-    transition: 0.3s;
+    transition: all 0.35s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px #075b8020;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 65, 100, 0.13);
 }
 
 .card h3 {
     color: #087eaa;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .card p {
@@ -146,49 +151,57 @@ nav button {
 
 .card a {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 22px;
     color: #078c9b;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* PIED DE PAGE */
+/* FOOTER */
 
 footer {
-    background: #063b5c;
+    background: linear-gradient(135deg, #052f4a, #075b80);
     color: white;
-    padding: 35px 20px;
+    padding: 45px 20px;
     text-align: center;
 }
 
 footer h3 {
-    font-size: 25px;
-    margin-bottom: 10px;
+    font-size: 29px;
+    margin-bottom: 12px;
 }
 
-/* TELEPHONES */
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
 
     header h1 {
-        font-size: 29px;
+        font-size: 32px;
     }
 
     .hero {
-        padding: 55px 18px;
+        padding: 65px 18px;
     }
 
     .hero h2 {
-        font-size: 27px;
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 16px;
     }
 
     nav a {
         font-size: 12px;
-        margin: 5px;
+        margin: 6px;
     }
 
     .container {
-        padding: 40px 15px;
+        padding: 45px 15px;
+    }
+
+    .container > h2 {
+        font-size: 26px;
     }
     }
 </style>
@@ -211,13 +224,57 @@ footer h3 {
 </nav>
 
 <section class="hero" id="accueil">
-    <h2>Bienvenue sur MediCare</h2>
 
-    <p>
-    Découvrez le corps humain, comprenez les maladies
-    et apprenez les bases de la santé grâce à une
-    plateforme éducative accessible à tous.
-    </p>
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            🌍 PLATEFORME MÉDICALE INTERNATIONALE
+        </span>
+
+        <h2>
+            La connaissance médicale<br>
+            au service de tous.
+        </h2>
+
+        <p>
+            Bienvenue sur MediCare, votre plateforme
+            internationale d'éducation médicale.
+            Explorez le corps humain, découvrez les maladies,
+            comprenez les traitements et développez
+            vos connaissances en santé.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#anatomie" class="btn-primary">
+                Explorer la plateforme →
+            </a>
+
+            <a href="#mission" class="btn-secondary">
+                Notre mission
+            </a>
+
+        </div>
+
+        <div class="hero-info">
+            <div>
+                <strong>100 %</strong>
+                <span>Éducatif</span>
+            </div>
+
+            <div>
+                <strong>FR / EN</strong>
+                <span>Multilingue</span>
+            </div>
+
+            <div>
+                <strong>Global</strong>
+                <span>Accessible à tous</span>
+            </div>
+        </div>
+
+    </div>
+
 </section>
 
 <section class="container">
