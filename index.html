@@ -267,6 +267,61 @@ footer h3 {
 .hero-info span {
     color: #587080;
     font-size: 13px;
+    } /* NOTRE MISSION */
+
+.mission {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.mission-content {
+    max-width: 1150px;
+    margin: auto;
+    text-align: center;
+}
+
+.mission-label {
+    color: #08a6a6;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.mission-content h2 {
+    color: #064b70;
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+.mission-content > p {
+    max-width: 750px;
+    margin: auto;
+    color: #587080;
+}
+
+.mission-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    margin-top: 45px;
+}
+
+.mission-card {
+    background: #f5faff;
+    padding: 30px;
+    border-radius: 16px;
+    border-left: 4px solid #08a6a6;
+    text-align: left;
+}
+
+.mission-card h3 {
+    color: #087eaa;
+    margin-bottom: 15px;
+}
+
+.mission-card p {
+    color: #587080;
+    font-size: 14px;
     }</style>
 </head>
 
@@ -340,7 +395,52 @@ footer h3 {
 
 </section>
 
-<section class="container">
+<section class="mission" id="mission">
+
+    <div class="mission-content">
+
+        <span class="mission-label">NOTRE ENGAGEMENT</span>
+
+        <h2>La médecine, un savoir accessible à tous.</h2>
+
+        <p>
+            MediCare est une plateforme internationale
+            d'éducation médicale dont la mission est de
+            rendre les connaissances en santé accessibles,
+            compréhensibles et utiles à tous.
+        </p>
+
+        <div class="mission-cards">
+
+            <div class="mission-card">
+                <h3>🎓 Étudiants</h3>
+                <p>
+                    Des ressources pédagogiques pour
+                    développer les connaissances médicales.
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <h3>🩺 Professionnels</h3>
+                <p>
+                    Des ressources éducatives pour
+                    accompagner l'apprentissage continu.
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <h3>🌍 Grand public</h3>
+                <p>
+                    Des informations accessibles pour
+                    mieux comprendre la santé et la prévention.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+  </section>
+    <section class="container">
     <h2>Explorer MediCare</h2>
 
     <div class="cards">
