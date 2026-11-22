@@ -15,53 +15,66 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f9fc;
+    background: #eaf4fa;
     color: #18364b;
     line-height: 1.7;
 }
 
+/* EN-TÊTE */
 header {
-    background: linear-gradient(135deg, #052f4a, #087eaa);
-    color: white;
-    padding: 35px 20px;
+    background: linear-gradient(135deg, #00334d, #008fc4);
+    color: #ffffff;
+    padding: 40px 20px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 35px;
+    font-size: 38px;
+    color: #ffffff;
 }
 
+header p {
+    color: #d5f5ff;
+}
+
+/* NAVIGATION */
 nav {
-    background: white;
-    padding: 15px;
+    background: #087eaa;
+    padding: 16px;
     text-align: center;
-    box-shadow: 0 3px 12px #00000012;
+    box-shadow: 0 3px 12px #00000020;
 }
 
 nav a {
-    color: #075b80;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
 
+nav a:hover {
+    color: #a9f5ff;
+}
+
+/* INTRODUCTION */
 .intro {
     text-align: center;
-    padding: 65px 20px;
-    background: linear-gradient(135deg, #e1f5fc, white);
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #bcecff, #ffffff);
 }
 
 .intro h2 {
-    color: #064b70;
-    font-size: 32px;
+    color: #005b83;
+    font-size: 34px;
     margin-bottom: 15px;
 }
 
 .intro p {
     max-width: 750px;
     margin: auto;
-    color: #587080;
+    color: #365b70;
 }
 
+/* CONTENU */
 .container {
     max-width: 1150px;
     margin: auto;
@@ -70,10 +83,12 @@ nav a {
 
 .container h2 {
     text-align: center;
-    color: #064b70;
+    color: #005b83;
     margin-bottom: 35px;
+    font-size: 30px;
 }
 
+/* CARTES */
 .systems {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -81,43 +96,62 @@ nav a {
 }
 
 .system-card {
-    background: white;
+    background: #ffffff;
     padding: 28px;
     border-radius: 16px;
-    box-shadow: 0 5px 20px #075b8010;
-    border-bottom: 4px solid #08a6a6;
+    box-shadow: 0 5px 20px #075b8020;
+    border-bottom: 5px solid #00b8a9;
     transition: 0.3s;
 }
 
 .system-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px #075b8040;
+    background: #f0fcff;
 }
 
 .system-card h3 {
-    color: #087eaa;
+    color: #007eaa;
     margin-bottom: 12px;
 }
 
 .system-card p {
-    color: #587080;
+    color: #526b7b;
     font-size: 14px;
 }
 
 .system-card a {
     display: inline-block;
     margin-top: 18px;
-    color: #078c9b;
+    color: #008f91;
     font-weight: bold;
     text-decoration: none;
 }
 
-footer {
-    background: #052f4a;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
+.system-card a:hover {
+    color: #005b83;
+    text-decoration: underline;
 }
 
+/* PIED DE PAGE */
+footer {
+    background: linear-gradient(135deg, #00334d, #075b80);
+    color: #ffffff;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer h3 {
+    color: #45e0d0;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #e0f5ff;
+    font-size: 14px;
+}
+
+/* MOBILE */
 @media(max-width: 600px) {
     .intro h2 {
         font-size: 26px;
@@ -125,6 +159,10 @@ footer {
 
     header h1 {
         font-size: 28px;
+    }
+
+    .container {
+        padding: 40px 15px;
     }
 }
 </style>
@@ -143,7 +181,6 @@ footer {
 
 <section class="intro">
     <h2>Explorez le corps humain</h2>
-
     <p>
         Découvrez les différents systèmes du corps humain,
         leurs organes, leurs structures et leurs fonctions
@@ -206,7 +243,6 @@ footer {
         </div>
 
     </div>
-
 </section>
 
 <footer>
@@ -218,3 +254,4 @@ footer {
 
 </body>
 </html>
+
