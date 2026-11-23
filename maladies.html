@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Maladies | MediCare</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f7fc;
+    color: #243447;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #063b75, #087bd0);
+    color: white;
+    padding: 22px 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 8px 0;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px #00000012;
+}
+
+nav a {
+    color: #0756a3;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 8px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #e1f1ff, #ffffff);
+    padding: 45px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #0756a3;
+    font-size: 28px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+}
+
+.search-box {
+    max-width: 550px;
+    margin: 25px auto 0;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #c5d9ed;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+.section-title {
+    color: #0756a3;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px #0000000c;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px #00000018;
+}
+
+.icon {
+    font-size: 35px;
+}
+
+.card h3 {
+    color: #0756a3;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #087bd0;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.info {
+    background: #e1f1ff;
+    border-left: 5px solid #087bd0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+footer {
+    background: #063b75;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media(max-width: 600px) {
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1> MediCare </h1>
+    <p>Comprendre les maladies, préserver la santé.</p>
+</header>
+
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="anatomie.html">Anatomie</a>
+    <a href="maladies.html">Maladies</a>
+</nav>
+
+<section class="hero">
+    <h2>Explorer les maladies</h2>
+
+    <p>
+        Découvrez les principales maladies, leurs causes,
+        leurs symptômes, leurs complications, leurs traitements
+        et les moyens de prévention.
+    </p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Rechercher une maladie..."
+            onkeyup="searchDiseases()"
+        >
+    </div>
+</section>
+
+<main>
+
+<h2 class="section-title">Catégories médicales</h2>
+
+<div class="grid" id="diseaseGrid">
+
+    <div class="card">
+        <div class="icon">🦠</div>
+        <h3>Maladies infectieuses</h3>
+        <p>Maladies causées par des virus, bactéries, parasites ou champignons.</p>
+        <a href="#infectieuses">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">❤️</div>
+        <h3>Maladies cardiovasculaires</h3>
+        <p>Maladies touchant le cœur et les vaisseaux sanguins.</p>
+        <a href="#cardiovasculaires">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🫁</div>
+        <h3>Maladies respiratoires</h3>
+        <p>Maladies affectant les poumons et les voies respiratoires.</p>
+        <a href="#respiratoires">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Maladies neurologiques</h3>
+        <p>Maladies affectant le cerveau, la moelle épinière et les nerfs.</p>
+        <a href="#neurologiques">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🩺</div>
+        <h3>Maladies digestives</h3>
+        <p>Maladies touchant l'estomac, les intestins et les organes digestifs.</p>
+        <a href="#digestives">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧬</div>
+        <h3>Maladies endocriniennes</h3>
+        <p>Maladies liées aux hormones et aux glandes endocrines.</p>
+        <a href="#endocriniennes">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🫘</div>
+        <h3>Maladies rénales</h3>
+        <p>Maladies touchant les reins et les voies urinaires.</p>
+        <a href="#renales">Explorer →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🦴</div>
+        <h3>Maladies osseuses</h3>
+        <p>Maladies affectant les os, les articulations et les muscles.</p>
+        <a href="#osseuses">Explorer →</a>
+    </div>
+
+</div>
+
+<h2 class="section-title" id="infectieuses" style="margin-top:40px;">
+    Maladies infectieuses
+</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">🦟</div>
+        <h3>Paludisme</h3>
+        <p>Maladie parasitaire transmise par certains moustiques.</p>
+        <a href="paludisme.html">Découvrir →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🦠</div>
+        <h3>Tuberculose</h3>
+        <p>Maladie infectieuse principalement causée par une bactérie qui touche les poumons.</p>
+        <a href="tuberculose.html">Découvrir →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🩺</div>
+        <h3>VIH / SIDA</h3>
+        <p>Infection virale qui affecte le système immunitaire.</p>
+        <a href="vih.html">Découvrir →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">💧</div>
+        <h3>Choléra</h3>
+        <p>Infection intestinale pouvant provoquer une diarrhée sévère.</p>
+        <a href="cholera.html">Découvrir →</a>
+    </div>
+
+</div>
+
+<div class="info">
+    <h3>Information médicale</h3>
+    <p>
+        MediCare est une plateforme éducative.
+        Les informations présentées ne remplacent pas une consultation
+        auprès d'un professionnel de santé.
+    </p>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 MediCare</p>
+    <p>Apprendre aujourd'hui pour mieux comprendre la santé demain.</p>
+    <a href="index.html">← Retour à l'accueil</a>
+</footer>
+
+<script>
+function searchDiseases() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+  </html>
