@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Maladies | MediCare</title>
+<title>Bibliothèque des maladies | MediCare</title>
 
 <style>
 * {
@@ -22,17 +21,13 @@ body {
 header {
     background: linear-gradient(135deg, #063b75, #087bd0);
     color: white;
-    padding: 22px 15px;
     text-align: center;
+    padding: 28px 15px;
 }
 
 header h1 {
     margin: 0;
     font-size: 30px;
-}
-
-header p {
-    margin: 8px 0;
 }
 
 nav {
@@ -50,9 +45,9 @@ nav a {
 }
 
 .hero {
-    background: linear-gradient(135deg, #e1f1ff, #ffffff);
-    padding: 45px 20px;
+    background: linear-gradient(135deg, #e1f1ff, white);
     text-align: center;
+    padding: 40px 20px;
 }
 
 .hero h2 {
@@ -60,74 +55,83 @@ nav a {
     font-size: 28px;
 }
 
-.hero p {
-    max-width: 650px;
-    margin: auto;
-}
-
 .search-box {
-    max-width: 550px;
+    max-width: 600px;
     margin: 25px auto 0;
 }
 
 .search-box input {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     border: 1px solid #c5d9ed;
     border-radius: 30px;
     font-size: 16px;
-    outline: none;
 }
 
 main {
-    max-width: 1100px;
+    max-width: 1150px;
     margin: auto;
     padding: 25px 18px;
 }
 
 .section-title {
     color: #0756a3;
-    margin-bottom: 20px;
+    margin-top: 35px;
 }
 
-.grid {
+.category-grid,
+.disease-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+    gap: 17px;
 }
 
-.card {
+.category-card,
+.disease-card {
     background: white;
-    padding: 22px;
-    border-radius: 14px;
+    padding: 20px;
+    border-radius: 13px;
     box-shadow: 0 3px 12px #0000000c;
-    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px #00000018;
+.category-card {
+    text-align: center;
 }
 
-.icon {
+.category-card .icon {
     font-size: 35px;
 }
 
-.card h3 {
+.category-card h3,
+.disease-card h3 {
     color: #0756a3;
-    margin-bottom: 8px;
 }
 
-.card p {
+.category-card a {
+    color: #087bd0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.disease-card {
+    border-left: 4px solid #087bd0;
+}
+
+.disease-card h3 {
+    margin-top: 0;
+}
+
+.disease-card p {
     font-size: 14px;
 }
 
-.card a {
+.badge {
     display: inline-block;
-    margin-top: 10px;
-    color: #087bd0;
-    font-weight: bold;
-    text-decoration: none;
+    background: #e1f1ff;
+    color: #0756a3;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
 }
 
 .info {
@@ -135,7 +139,15 @@ main {
     border-left: 5px solid #087bd0;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 35px;
+}
+
+#noResult {
+    display: none;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
 }
 
 footer {
@@ -143,22 +155,21 @@ footer {
     color: white;
     text-align: center;
     padding: 25px;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 footer a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
 }
 
 @media(max-width: 600px) {
-    .hero h2 {
-        font-size: 23px;
-    }
-
     header h1 {
         font-size: 25px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
     }
 }
 </style>
@@ -167,8 +178,9 @@ footer a {
 <body>
 
 <header>
-    <h1> MediCare </h1>
-    <p>Comprendre les maladies, préserver la santé.</p>
+    <h1>MediCare</h1>
+    <p>Bibliothèque médicale des maladies</p>
+    <p>Comprendre les maladies pour mieux préserver la santé.</p>
 </header>
 
 <nav>
@@ -179,129 +191,95 @@ footer a {
 
 <section class="hero">
     <h2>Explorer les maladies</h2>
-
     <p>
-        Découvrez les principales maladies, leurs causes,
-        leurs symptômes, leurs complications, leurs traitements
-        et les moyens de prévention.
+        Découvrez les maladies, leurs origines, leurs manifestations,
+        leurs complications, leurs traitements et leur prévention.
     </p>
 
     <div class="search-box">
         <input
-            type="text"
+            type="search"
             id="search"
             placeholder="Rechercher une maladie..."
-            onkeyup="searchDiseases()"
+            oninput="searchDiseases()"
         >
     </div>
 </section>
 
 <main>
 
-<h2 class="section-title">Catégories médicales</h2>
+<h2 class="section-title">Les catégories médicales</h2>
 
-<div class="grid" id="diseaseGrid">
+<div class="category-grid">
 
-    <div class="card">
-        <div class="icon">🦠</div>
-        <h3>Maladies infectieuses</h3>
-        <p>Maladies causées par des virus, bactéries, parasites ou champignons.</p>
-        <a href="#infectieuses">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🦠</div>
+    <h3>Maladies infectieuses</h3>
+    <p>Infections causées par des microorganismes.</p>
+    <a href="#infectieuses">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">❤️</div>
-        <h3>Maladies cardiovasculaires</h3>
-        <p>Maladies touchant le cœur et les vaisseaux sanguins.</p>
-        <a href="#cardiovasculaires">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">❤️</div>
+    <h3>Maladies cardiovasculaires</h3>
+    <p>Maladies du cœur et des vaisseaux sanguins.</p>
+    <a href="#cardiovasculaires">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🫁</div>
-        <h3>Maladies respiratoires</h3>
-        <p>Maladies affectant les poumons et les voies respiratoires.</p>
-        <a href="#respiratoires">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🫁</div>
+    <h3>Maladies respiratoires</h3>
+    <p>Maladies des poumons et des voies respiratoires.</p>
+    <a href="#respiratoires">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🧠</div>
-        <h3>Maladies neurologiques</h3>
-        <p>Maladies affectant le cerveau, la moelle épinière et les nerfs.</p>
-        <a href="#neurologiques">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🧠</div>
+    <h3>Maladies neurologiques</h3>
+    <p>Maladies du cerveau et du système nerveux.</p>
+    <a href="#neurologiques">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🩺</div>
-        <h3>Maladies digestives</h3>
-        <p>Maladies touchant l'estomac, les intestins et les organes digestifs.</p>
-        <a href="#digestives">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🩺</div>
+    <h3>Maladies digestives</h3>
+    <p>Maladies des organes de la digestion.</p>
+    <a href="#digestives">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🧬</div>
-        <h3>Maladies endocriniennes</h3>
-        <p>Maladies liées aux hormones et aux glandes endocrines.</p>
-        <a href="#endocriniennes">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🧬</div>
+    <h3>Maladies endocriniennes</h3>
+    <p>Maladies liées aux hormones et aux glandes.</p>
+    <a href="#endocriniennes">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🫘</div>
-        <h3>Maladies rénales</h3>
-        <p>Maladies touchant les reins et les voies urinaires.</p>
-        <a href="#renales">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🫘</div>
+    <h3>Maladies rénales</h3>
+    <p>Maladies des reins et des voies urinaires.</p>
+    <a href="#renales">Explorer →</a>
+</div>
 
-    <div class="card">
-        <div class="icon">🦴</div>
-        <h3>Maladies osseuses</h3>
-        <p>Maladies affectant les os, les articulations et les muscles.</p>
-        <a href="#osseuses">Explorer →</a>
-    </div>
+<div class="category-card">
+    <div class="icon">🦴</div>
+    <h3>Maladies osseuses</h3>
+    <p>Maladies des os et des articulations.</p>
+    <a href="#osseuses">Explorer →</a>
+</div>
 
 </div>
 
-<h2 class="section-title" id="infectieuses" style="margin-top:40px;">
-    Maladies infectieuses
-</h2>
+<div id="diseaseSections"></div>
 
-<div class="grid">
-
-    <div class="card">
-        <div class="icon">🦟</div>
-        <h3>Paludisme</h3>
-        <p>Maladie parasitaire transmise par certains moustiques.</p>
-        <a href="paludisme.html">Découvrir →</a>
-    </div>
-
-    <div class="card">
-        <div class="icon">🦠</div>
-        <h3>Tuberculose</h3>
-        <p>Maladie infectieuse principalement causée par une bactérie qui touche les poumons.</p>
-        <a href="tuberculose.html">Découvrir →</a>
-    </div>
-
-    <div class="card">
-        <div class="icon">🩺</div>
-        <h3>VIH / SIDA</h3>
-        <p>Infection virale qui affecte le système immunitaire.</p>
-        <a href="vih.html">Découvrir →</a>
-    </div>
-
-    <div class="card">
-        <div class="icon">💧</div>
-        <h3>Choléra</h3>
-        <p>Infection intestinale pouvant provoquer une diarrhée sévère.</p>
-        <a href="cholera.html">Découvrir →</a>
-    </div>
-
-</div>
+<p id="noResult">Aucune maladie ne correspond à votre recherche.</p>
 
 <div class="info">
-    <h3>Information médicale</h3>
+    <h3>Information médicale importante</h3>
     <p>
         MediCare est une plateforme éducative.
-        Les informations présentées ne remplacent pas une consultation
-        auprès d'un professionnel de santé.
+        Ses informations ne remplacent pas une consultation,
+        un diagnostic ou un traitement prescrit par un professionnel de santé.
     </p>
 </div>
 
@@ -309,26 +287,284 @@ footer a {
 
 <footer>
     <p>© 2026 MediCare</p>
-    <p>Apprendre aujourd'hui pour mieux comprendre la santé demain.</p>
+    <p>Apprendre pour mieux comprendre la santé.</p>
     <a href="index.html">← Retour à l'accueil</a>
 </footer>
 
 <script>
-function searchDiseases() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
 
-    cards.forEach(function(card) {
-        let text = card.innerText.toLowerCase();
+const categories = [
+
+{
+id: "infectieuses",
+name: "Maladies infectieuses",
+icon: "🦠",
+diseases: [
+["Paludisme", "Infection parasitaire transmise par certains moustiques."],
+["Tuberculose", "Maladie bactérienne touchant principalement les poumons."],
+["VIH/SIDA", "Infection virale affectant le système immunitaire."],
+["Choléra", "Infection intestinale pouvant provoquer une diarrhée sévère."],
+["Dengue", "Infection virale transmise par les moustiques."],
+["Hépatite B", "Infection virale qui touche le foie."],
+["Fièvre typhoïde", "Infection bactérienne transmise principalement par l'eau et les aliments contaminés."],
+["Méningite infectieuse", "Inflammation des membranes entourant le cerveau et la moelle épinière."],
+["Rougeole", "Maladie virale très contagieuse."],
+["Grippe", "Infection respiratoire causée par les virus influenza."],
+["COVID-19", "Maladie respiratoire causée par le coronavirus SARS-CoV-2."],
+["Fièvre jaune", "Maladie virale transmise par certains moustiques."],
+["Poliomyélite", "Maladie virale pouvant atteindre le système nerveux."],
+["Tétanos", "Maladie provoquée par une toxine bactérienne."],
+["Rage", "Maladie virale grave transmise notamment par la morsure d'un animal infecté."],
+["Varicelle", "Infection virale caractérisée notamment par une éruption cutanée."],
+["Oreillons", "Infection virale touchant notamment les glandes salivaires."],
+["Rubéole", "Infection virale pouvant présenter un risque important pendant la grossesse."],
+["Coqueluche", "Infection bactérienne respiratoire provoquant une toux importante."],
+["Pneumonie infectieuse", "Infection des poumons pouvant être causée par différents microorganismes."]
+]
+},
+
+{
+id: "cardiovasculaires",
+name: "Maladies cardiovasculaires",
+icon: "❤️",
+diseases: [
+["Hypertension artérielle", "Élévation persistante de la pression du sang dans les artères."],
+["Infarctus du myocarde", "Lésion du muscle cardiaque due à une interruption de sa circulation sanguine."],
+["Accident vasculaire cérébral", "Atteinte du cerveau provoquée par un problème de circulation sanguine."],
+["Insuffisance cardiaque", "Diminution de la capacité du cœur à assurer correctement la circulation."],
+["Angine de poitrine", "Douleur thoracique liée à un apport insuffisant de sang au cœur."],
+["Arythmie cardiaque", "Anomalie du rythme des battements du cœur."],
+["Fibrillation auriculaire", "Trouble du rythme caractérisé par une activité désorganisée des oreillettes."],
+["Cardiomyopathie", "Maladie affectant le muscle cardiaque."],
+["Endocardite", "Inflammation de la membrane interne du cœur, parfois d'origine infectieuse."],
+["Péricardite", "Inflammation de l'enveloppe qui entoure le cœur."],
+["Artériopathie périphérique", "Atteinte des artères qui irriguent principalement les membres."],
+["Thrombose veineuse profonde", "Formation d'un caillot dans une veine profonde."],
+["Embolie pulmonaire", "Obstruction d'une artère pulmonaire par un élément circulant, souvent un caillot."],
+["Anévrisme", "Dilatation anormale et localisée d'un vaisseau sanguin."],
+["Maladie des valves cardiaques", "Atteinte d'une ou plusieurs valves du cœur."]
+]
+},
+
+{
+id: "respiratoires",
+name: "Maladies respiratoires",
+icon: "🫁",
+diseases: [
+["Asthme", "Maladie inflammatoire chronique des voies respiratoires."],
+["Bronchite aiguë", "Inflammation des bronches, souvent d'origine virale."],
+["Bronchite chronique", "Inflammation durable des bronches avec toux persistante."],
+["Bronchopneumopathie chronique obstructive", "Maladie respiratoire chronique qui limite le passage de l'air."],
+["Pneumonie", "Infection du tissu pulmonaire."],
+["Tuberculose pulmonaire", "Forme de tuberculose qui atteint les poumons."],
+["Cancer du poumon", "Développement de cellules cancéreuses dans les poumons."],
+["Apnée du sommeil", "Trouble caractérisé par des interruptions répétées de la respiration pendant le sommeil."],
+["Fibrose pulmonaire", "Maladie caractérisée par une cicatrisation progressive du tissu pulmonaire."],
+["Emphysème pulmonaire", "Atteinte des alvéoles pulmonaires."],
+["Rhinite allergique", "Inflammation du nez provoquée par une réaction allergique."],
+["Sinusite", "Inflammation des sinus."],
+["Pleurésie", "Inflammation de la membrane entourant les poumons."],
+["Mucoviscidose", "Maladie génétique affectant notamment les sécrétions respiratoires."],
+["Bronchectasie", "Dilatation anormale et permanente des bronches."]
+]
+},
+
+{
+id: "neurologiques",
+name: "Maladies neurologiques",
+icon: "🧠",
+diseases: [
+["Épilepsie", "Maladie neurologique caractérisée par une prédisposition aux crises épileptiques."],
+["Maladie de Parkinson", "Maladie neurodégénérative affectant notamment les mouvements."],
+["Maladie d'Alzheimer", "Maladie neurodégénérative touchant la mémoire et d'autres fonctions cognitives."],
+["Migraine", "Maladie neurologique provoquant des maux de tête récurrents."],
+["Sclérose en plaques", "Maladie inflammatoire touchant le système nerveux central."],
+["Méningite", "Inflammation des membranes qui entourent le cerveau et la moelle épinière."],
+["Encéphalite", "Inflammation du tissu cérébral."],
+["Neuropathie périphérique", "Atteinte des nerfs situés en dehors du cerveau et de la moelle épinière."],
+["Sclérose latérale amyotrophique", "Maladie neurodégénérative touchant les neurones moteurs."],
+["Maladie de Huntington", "Maladie génétique neurodégénérative."],
+["Hydrocéphalie", "Accumulation anormale de liquide cérébrospinal dans les cavités du cerveau."],
+["Paralysie cérébrale", "Ensemble de troubles permanents du mouvement et de la posture."],
+["Névralgie du trijumeau", "Douleur liée à une atteinte du nerf trijumeau."],
+["Myasthénie", "Maladie auto-immune perturbant la transmission entre les nerfs et les muscles."],
+["Syndrome de Guillain-Barré", "Maladie neurologique souvent caractérisée par une faiblesse musculaire progressive."]
+]
+},
+
+{
+id: "digestives",
+name: "Maladies digestives",
+icon: "🩺",
+diseases: [
+["Gastrite", "Inflammation de la muqueuse de l'estomac."],
+["Ulcère gastroduodénal", "Lésion de la paroi de l'estomac ou du duodénum."],
+["Reflux gastro-œsophagien", "Remontée du contenu de l'estomac vers l'œsophage."],
+["Gastro-entérite", "Inflammation de l'estomac et de l'intestin."],
+["Hépatite", "Inflammation du foie."],
+["Cirrhose", "Maladie chronique caractérisée par une altération progressive du foie."],
+["Pancréatite", "Inflammation du pancréas."],
+["Appendicite", "Inflammation de l'appendice."],
+["Maladie de Crohn", "Maladie inflammatoire chronique du tube digestif."],
+["Rectocolite hémorragique", "Maladie inflammatoire chronique du côlon et du rectum."],
+["Syndrome de l'intestin irritable", "Trouble fonctionnel digestif provoquant notamment des douleurs abdominales."],
+["Calculs biliaires", "Formation de dépôts solides dans la vésicule biliaire."],
+["Cancer colorectal", "Cancer touchant le côlon ou le rectum."],
+["Maladie cœliaque", "Maladie auto-immune déclenchée par le gluten."],
+["Hémorroïdes", "Affection des structures vasculaires de la région anale."]
+]
+},
+
+{
+id: "endocriniennes",
+name: "Maladies endocriniennes",
+icon: "🧬",
+diseases: [
+["Diabète de type 1", "Maladie auto-immune entraînant une insuffisance de production d'insuline."],
+["Diabète de type 2", "Maladie caractérisée par une résistance à l'insuline et une régulation anormale du glucose."],
+["Diabète gestationnel", "Diabète diagnostiqué pendant la grossesse."],
+["Hypothyroïdie", "Production insuffisante d'hormones thyroïdiennes."],
+["Hyperthyroïdie", "Production excessive d'hormones thyroïdiennes."],
+["Maladie de Basedow", "Maladie auto-immune pouvant provoquer une hyperthyroïdie."],
+["Goitre", "Augmentation du volume de la glande thyroïde."],
+["Syndrome de Cushing", "Ensemble de manifestations provoquées par un excès prolongé de cortisol."],
+["Maladie d'Addison", "Insuffisance de fonctionnement des glandes surrénales."],
+["Acromégalie", "Maladie provoquée par une production excessive d'hormone de croissance chez l'adulte."],
+["Gigantisme", "Croissance excessive liée à un excès d'hormone de croissance avant la fin de la croissance."],
+["Hyperparathyroïdie", "Production excessive d'hormone parathyroïdienne."],
+["Hypoparathyroïdie", "Production insuffisante d'hormone parathyroïdienne."],
+["Syndrome des ovaires polykystiques", "Trouble hormonal et métabolique pouvant affecter le cycle menstruel."],
+["Diabète insipide", "Trouble de la régulation de l'eau dans l'organisme."]
+]
+},
+
+{
+id: "renales",
+name: "Maladies rénales et urinaires",
+icon: "🫘",
+diseases: [
+["Insuffisance rénale aiguë", "Diminution rapide de la fonction des reins."],
+["Insuffisance rénale chronique", "Diminution durable de la fonction rénale."],
+["Calculs rénaux", "Formation de dépôts solides dans les reins."],
+["Infection urinaire", "Infection touchant une partie de l'appareil urinaire."],
+["Pyélonéphrite", "Infection du rein et de ses structures."],
+["Cystite", "Inflammation de la vessie, souvent liée à une infection."],
+["Glomérulonéphrite", "Inflammation des structures filtrantes des reins."],
+["Syndrome néphrotique", "Ensemble de manifestations liées à une perte importante de protéines dans les urines."],
+["Polykystose rénale", "Maladie génétique caractérisée par la formation de kystes dans les reins."],
+["Néphropathie diabétique", "Atteinte rénale liée au diabète."],
+["Néphropathie hypertensive", "Atteinte rénale associée à l'hypertension artérielle."],
+["Hydronéphrose", "Dilatation du rein due à une mauvaise évacuation de l'urine."],
+["Cancer du rein", "Développement de cellules cancéreuses dans le rein."],
+["Incontinence urinaire", "Perte involontaire d'urine."],
+["Vessie hyperactive", "Trouble caractérisé par une envie urgente et fréquente d'uriner."]
+]
+},
+
+{
+id: "osseuses",
+name: "Maladies osseuses et articulaires",
+icon: "🦴",
+diseases: [
+["Ostéoporose", "Maladie caractérisée par une diminution de la résistance des os."],
+["Arthrose", "Maladie articulaire liée notamment à la dégradation du cartilage."],
+["Arthrite", "Inflammation d'une ou plusieurs articulations."],
+["Polyarthrite rhumatoïde", "Maladie auto-immune inflammatoire des articulations."],
+["Goutte", "Maladie liée à un dépôt de cristaux d'urate dans les articulations."],
+["Ostéomyélite", "Infection de l'os."],
+["Rachitisme", "Maladie de l'enfant liée à un défaut de minéralisation des os."],
+["Scoliose", "Déformation de la colonne vertébrale."],
+["Cyphose", "Courbure excessive de la colonne vertébrale vers l'arrière."],
+["Lordose", "Courbure accentuée de la colonne vertébrale vers l'avant."],
+["Spondylarthrite ankylosante", "Maladie inflammatoire chronique touchant notamment la colonne vertébrale."],
+["Ostéomalacie", "Défaut de minéralisation des os chez l'adulte."],
+["Maladie de Paget osseuse", "Trouble chronique du renouvellement du tissu osseux."],
+["Fibromyalgie", "Affection chronique caractérisée notamment par des douleurs diffuses."],
+["Dystrophie musculaire", "Groupe de maladies génétiques entraînant une faiblesse musculaire progressive."]
+]
+}
+
+];
+
+const container = document.getElementById("diseaseSections");
+
+categories.forEach(category => {
+
+    let section = document.createElement("section");
+    section.id = category.id;
+
+    let title = document.createElement("h2");
+    title.className = "section-title";
+    title.textContent = category.icon + " " + category.name;
+
+    let grid = document.createElement("div");
+    grid.className = "disease-grid";
+
+    category.diseases.forEach(disease => {
+
+        let card = document.createElement("article");
+        card.className = "disease-card";
+
+        let name = document.createElement("h3");
+        name.textContent = disease[0];
+
+        let description = document.createElement("p");
+        description.textContent = disease[1];
+
+        let badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = "Fiche détaillée à venir";
+
+        card.appendChild(name);
+        card.appendChild(description);
+        card.appendChild(badge);
+
+        grid.appendChild(card);
+    });
+
+    section.appendChild(title);
+    section.appendChild(grid);
+    container.appendChild(section);
+});
+
+function searchDiseases() {
+
+    let input = document.getElementById("search").value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    let cards = document.querySelectorAll(".disease-card");
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+
+        let text = card.innerText
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
 
         if (text.includes(input)) {
             card.style.display = "";
+            visibleCount++;
         } else {
             card.style.display = "none";
         }
     });
+
+    document.querySelectorAll("#diseaseSections section").forEach(section => {
+        let visibleCards = section.querySelectorAll(
+            ".disease-card:not([style*='display: none'])"
+        );
+
+        section.style.display = visibleCards.length > 0 ? "" : "none";
+    });
+
+    document.getElementById("noResult").style.display =
+        visibleCount === 0 ? "block" : "none";
 }
+
 </script>
 
 </body>
-  </html>
+    </html>
